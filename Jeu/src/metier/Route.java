@@ -7,6 +7,8 @@ public class Route
 {
     private static List<Route> routes = new ArrayList<>();
 
+	private Joueur joueur = null;
+
 	private int    nbTroncons;
 	private int absDep;
 	private int ordDep;
@@ -76,6 +78,24 @@ public class Route
 	public int getAbsArr(){ return this.absArr; }
 
 	public int getOrdArr(){ return this.ordArr; }	
+
+	
+
+	public Joueur getJoueur()
+	{
+		return this.joueur;
+	}
+
+	public boolean possession(Joueur joueur)
+	{
+		if (this.joueur == null)
+		{
+			joueur.setJetPoss(joueur.getNbJetPoss() - this.getNbTroncons());
+			this.joueur = joueur;
+			return true;
+		}
+		return false;
+	}
 
 	public String toString()
 	{
